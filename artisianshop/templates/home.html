@@ -1,0 +1,217 @@
+{% extends 'navbar.html'%}
+{%block nav%}
+{% load static%}
+
+<style>
+
+
+  .footer {
+  width: 100%;
+  background-color: black;
+}
+.footer .col {
+  width: 190px;
+  height: auto;
+  float: left;
+  box-sizing: border-box;
+  padding: 20px;
+}
+.footer .col h2 {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 17px;
+  padding: 10px 0;
+  color: #FF0063;
+  text-transform: uppercase;
+}
+.footer .col ul {
+  list-style-type: none;
+  padding: 0;
+}
+.footer .col ul li {
+  color: white;
+  font-size: 12px;
+  padding: 5px 0px;
+}
+.address ul li {
+  display: inline-block;
+  padding-right: 5px !important;
+}
+
+.footer .col ul li:hover {
+  cursor: pointer;
+  color: lightgray;
+  font-weight: bold;
+}
+.clearfix {
+  clear: both;
+}
+@media only screen and (min-width: 1280px) {
+  .contain {
+    width: 1200px;
+    margin: 0 auto;
+  }
+}
+@media only screen and (max-width: 1139px) {
+  .contain .address {
+    width: 1000px;
+    display: block;
+  }
+  .address h2 {
+    margin: 0px;
+  }
+}
+@media only screen and (max-width: 950px) {
+  .footer .col {
+    width: 33%;
+  }
+  .footer .col h2 {
+    font-size: 14px;
+  }
+  .footer .col ul li {
+    font-size: 13px;
+  }
+}
+@media only screen and (max-width: 500px) {
+    .footer .col {
+      width: 50%;
+    }
+    .footer .col h2 {
+      font-size: 14px;
+    }
+    .footer .col ul li {
+      font-size: 13px;
+    }
+}
+@media only screen and (max-width: 340px) {
+  .footer .col {
+    width: 100%;
+  }
+}
+
+
+
+
+h1 {
+  font-size: 50px;
+  font-weight: bold;
+  font-family: sans-serif;
+  text-decoration: none;
+
+  position: relative;
+  color: transparent;
+  background-image: repeating-linear-gradient(45deg, #fec300 0px, #daaf2b 144px, rgb(228, 163, 66) 144px, rgb(247, 216, 63) 288px, #ffc955 288px, #ffb254 432px);
+  background-size: 250%;
+  background-position: 0%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-animation: stripeAnimation 3s linear infinite;
+  animation: stripeAnimation 3s linear infinite;
+  animation-play-state: running;
+  -webkit-animation-play-state: paused;
+  animation-play-state: paused;
+}
+
+h1:hover {
+  -webkit-animation-play-state: running;
+  animation-play-state: running;
+}
+
+@keyframes stripeAnimation {
+  100% {
+    background-position: 165%;
+  }
+}
+
+
+
+
+</style>
+
+<link rel="stylesheet" href="{% static 'css/stylehome.css'%}">
+<div id="demo" class="carousel slide  " data-bs-ride="carousel">
+
+ 
+
+  <div class="carousel-inner mt-5 "  >
+    <div class="carousel-item active">
+      <img src="{% static 'images/pots.png' %}" style="height: 450px; width: auto;"  class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/pots3.jpg' %}" style="height: 450px; width: auto;"  class="d-block w-100">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/pots4.webp' %}" style="height: 450px;width: auto;" class="d-block w-100">
+    </div>
+
+  </div>
+
+  <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+</div>
+</div><br><br>
+
+
+    <h1 class="text-center">PRODUCTS</h1>
+
+<div class="row gap-3 mt-5" >
+  {%for i in data%}
+    <div class="col-3  mx-5 mt-5" >
+      <div class="card" style="background-color:rgb(227, 162, 30)">       
+            <div class="product-image">
+              <img src="{{i.image.url}}" alt="OFF-white Red Edition" draggable="false" style="height:250px; width:300px "/>
+            </div>
+          <div class="card-body">
+            <div class="product-info">
+              <h2>{{i.name}}</h2>
+              <p>Meterial Used: {{i.Meterial}}</p>
+              <div class="price">Rs.{{i.price}}.00</div>
+            </div>      
+              <div>
+                <a href="{% url 'prodet' i.id%}"><button class=" btn buy-btn mt-3 mx-5"><b style="color: white;">More Details..</b></button></a>
+              </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  {%endfor%}
+  </div>
+
+  </header>
+
+  <br>
+  <br>
+
+  <footer class="mt-5">
+    <section class="container">
+    </section>
+      <div class="footer">
+        <div class="contain te">
+   
+        <div class="col">
+          <h2>Contact</h2>
+          <ul>
+            <li>+91 8606124219</li>
+            <li>subhijithsubhi12@gmail.com</li>
+          </ul>
+        </div>
+        <div class="col address">
+          <h2>Place</h2>
+          <ul>
+            <li>Vadakara <br> kozhikode,kerala</li>
+        </ul>
+        </div>
+      <div class="clearfix"></div>
+      </div>
+      <p style="color: white;" class="text-center">Copyright 2024 KnockOnWood pvt.lmt. All Rights Reserved</p>
+<br>
+      </div>
+  </footer>        
+{%endblock nav%}

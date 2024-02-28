@@ -1,0 +1,42 @@
+
+{% extends 'navbar.html'%}
+{%block nav%}
+{%load static%}
+<link rel="stylesheet" href="{% static 'css/stylehome.css'%}">
+
+
+<div class="row gap-3 mt-5" >
+  {% if searched %}
+ 
+  {% for search in venue %}
+    <div class="col-2  mx-5 mt-5" >
+
+      <div class="card" style="background-color:rgb(227, 162, 30)">       
+            <div class="product-image">
+              <img src="{{search.image.url}}" alt="OFF-white Red Edition" draggable="false" style="height:250px; width:300px "/>
+            </div>
+          <div class="card-body">
+            <div class="product-info">
+              <h2>{{search}}</h2>
+              <p>Meterial Used: {{search.Meterial}}</p>
+              <div class="price">Rs.{{search.price}}.00</div>
+            </div>      
+              <div>
+                <a href="{% url 'prodet' search.id%}" ><button class=" btn buy-btn mt-3 mx-5"><b style="color: white;">More Details..</b></button></a>
+              </div>
+
+        </div>
+
+      </div>
+    </div>
+  </a>
+
+    {%endfor%}
+
+    {%else %}
+
+    <h1 class="text-center mt-5">{{search}}NOT FOUND....</h1>
+
+    {%endif%}
+ 
+{%endblock nav%}

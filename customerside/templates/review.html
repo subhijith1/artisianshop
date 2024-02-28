@@ -1,0 +1,173 @@
+
+
+{% block nav2%}
+
+
+
+
+
+
+<style>
+    body {
+      background-color: #f7f6f6
+  }
+  
+  .card {
+      
+      border: none;
+      box-shadow: 5px 6px 6px 2px #e9ecef;
+      border-radius: 4px;
+  }
+  
+  
+  .dots{
+  
+      height: 4px;
+    width: 4px;
+    margin-bottom: 2px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+  }
+  
+  .badge{
+  
+          padding: 7px;
+          padding-right: 9px;
+      padding-left: 16px;
+      box-shadow: 5px 6px 6px 2px #e9ecef;
+  }
+  
+  .user-img{
+  
+      margin-top: 4px;
+  }
+  
+  .check-icon{
+  
+      font-size: 17px;
+      color: #c3bfbf;
+      top: 1px;
+      position: relative;
+      margin-left: 3px;
+  }
+  
+  .form-check-input{
+      margin-top: 6px;
+      margin-left: -24px !important;
+      cursor: pointer;
+  }
+  
+  
+  .form-check-input:focus{
+      box-shadow: none;
+  }
+  
+  
+  .icons i{
+  
+      margin-left: 8px;
+  }
+  .reply{
+  
+      margin-left: 12px;
+  }
+  
+  .reply small{
+  
+      color: #b7b4b4;
+  
+  }
+  
+  
+  .reply small:hover{
+  
+      color: green;
+      cursor: pointer;
+  
+  }
+  </style>
+
+
+  
+
+
+            <div class="container py-4">
+                <div class="row gx-5">
+                    <div class="col">
+                        <div class="weather-card one">
+                            <div class="top">
+                                <div class="wrapper">
+                                    <div class="mynav">
+                                        <a href="javascript:;"><span class="lnr lnr-chevron-left"></span></a>
+                                        <a href="javascript:;"><span class="lnr lnr-cog"></span></a>
+                                    </div>
+                                    <h4>Add a comment</h4>        
+
+                            
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <div class=" mt-3">
+                                    <form action="{% url 'areview' data.id %}" method="post">
+                                           {% csrf_token %}
+                                               {{form}}
+                                           <button class="btn my-3 ">Comment</button>
+                                       </form> 
+                                   </div>  
+                            </div>
+                        </div>
+                    </div>
+            
+                    <div class="col">
+                        <div class="weather-card rain">
+                            <div class="top">
+                                <div class="headings d-flex justify-content-between  mb-3">
+                                    <div class="buttons">
+                                        <span class="badge bg-white d-flex flex-row ">
+                                            <span class="text-primary">ALL COMMENTS</span>                    
+                                        </span>                
+                                      </div>  
+                                      <hr>           
+                                </div>
+                            </div>
+                            <div class="bottom">
+                                <div class="wrapper ">
+                                    <div class="row d-flex justify-content-between align-items-center">
+                                        {% for i in review%}
+                                        <span><small class="font-weight-bold text-secondary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-alarm-fill" viewBox="0 0 16 16">
+                                            <path d="M6 .5a.5.5 0 0 1 .5-.5h3a.5.5 0 0 1 0 1H9v1.07a7.001 7.001 0 0 1 3.274 12.474l.601.602a.5.5 0 0 1-.707.708l-.746-.746A6.97 6.97 0 0 1 8 16a6.97 6.97 0 0 1-3.422-.892l-.746.746a.5.5 0 0 1-.707-.708l.602-.602A7.001 7.001 0 0 1 7 2.07V1h-.5A.5.5 0 0 1 6 .5m2.5 5a.5.5 0 0 0-1 0v3.362l-1.429 2.38a.5.5 0 1 0 .858.515l1.5-2.5A.5.5 0 0 0 8.5 9zM.86 5.387A2.5 2.5 0 1 1 4.387 1.86 8.04 8.04 0 0 0 .86 5.387M11.613 1.86a2.5 2.5 0 1 1 3.527 3.527 8.04 8.04 0 0 0-3.527-3.527"/>
+                                          </svg> {{i.date}}</small> <small class="font-weight-bold"></small></span>
+                
+                                            <p></p>
+                      
+                                  <div class="user d-flex flex-row align-items-center">
+                      
+                                    <img src="" width="30" class="user-img rounded-circle mr-2">
+                                    <span><small class="font-weight-bold text-dark"><b><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-workspace" viewBox="0 0 16 16">
+                                        <path d="M4 16s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1zm4-5.95a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+                                        <path d="M2 1a2 2 0 0 0-2 2v9.5A1.5 1.5 0 0 0 1.5 14h.653a5.4 5.4 0 0 1 1.066-2H1V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v9h-2.219c.554.654.89 1.373 1.066 2h.653a1.5 1.5 0 0 0 1.5-1.5V3a2 2 0 0 0-2-2z"/>
+                                      </svg>  {{i.user.username}}</b></small>
+                                        <br> <small class="font-weight-bold">{{i.review}}</small></span>
+                                      
+                                  </div>
+                      
+                      
+                                  </div>
+                      
+                      
+                      
+                                   <hr>
+                      
+                                
+                      
+                                  
+                                        {%endfor%}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+{%endblock%}
+  

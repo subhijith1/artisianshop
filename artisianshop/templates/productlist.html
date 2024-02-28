@@ -1,0 +1,55 @@
+{% extends 'navbar.html'%}
+{%block nav%}
+{% load static%}
+
+<link rel="stylesheet" href="{% static 'css/stylehome.css'%}">
+
+<div class="row gap-3 mt-5" >
+  {%for d in data1%}
+    <div class="col-3  mx-5 mt-5" >
+      <div class="card" style="background-color:rgb(227, 162, 30)">       
+            <div class="product-image">
+              <img src="{{d.image.url}}" alt="OFF-white Red Edition" draggable="false" style="height:250px; width:300px "/>
+            </div>
+          <div class="card-body">
+            <div class="product-info">
+              <h2>{{d.category}}</h2>
+              <p>Meterial Used: {{d.category_choice}}</p>
+              <!-- <div class="price">Rs.{{i.price}}.00</div> -->
+            </div>      
+
+
+        </div>
+
+      </div>
+    </div>
+
+  {%endfor%}
+  </div>
+<div class="row gap-3 mt-5" >
+  {%for i in data%}
+    <div class="col-3  mx-5 mt-5" >
+      <div class="card" style="background-color:rgb(227, 162, 30)">       
+            <div class="product-image">
+              <img src="{{i.image.url}}" alt="OFF-white Red Edition" draggable="false" style="height:250px; width:300px "/>
+            </div>
+          <div class="card-body">
+            <div class="product-info">
+              <h2>{{i.name}}</h2>
+              <p>Meterial Used: {{i.Meterial}}</p>
+              <div class="price">Rs.{{i.price}}.00</div>
+            </div>      
+              <div>
+                <a href="{% url 'prodet' i.id%}"><button class=" btn buy-btn mt-3 mx-5"><b style="color: white;">More Details..</b></button></a>
+              </div>
+
+        </div>
+
+      </div>
+    </div>
+
+  {%endfor%}
+  </div>
+
+  </header>
+{%endblock nav%}
